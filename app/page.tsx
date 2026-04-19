@@ -25,6 +25,13 @@ export default function Home() {
             MISSION
           </a>
           <a
+            id="nav-status"
+            href="#telemetry"
+            className="text-on-surface/70 hover:text-primary-container hover:bg-white/5 transition-all font-headline tracking-[-0.02em] uppercase font-bold text-sm px-2 py-1"
+          >
+            STATUS
+          </a>
+          <a
             id="nav-capabilities"
             href="#capabilities"
             className="text-on-surface/70 hover:text-primary-container hover:bg-white/5 transition-all font-headline tracking-[-0.02em] uppercase font-bold text-sm px-2 py-1"
@@ -37,13 +44,6 @@ export default function Home() {
             className="text-on-surface/70 hover:text-primary-container hover:bg-white/5 transition-all font-headline tracking-[-0.02em] uppercase font-bold text-sm px-2 py-1"
           >
             GALLERY
-          </a>
-          <a
-            id="nav-data"
-            href="#telemetry"
-            className="text-on-surface/70 hover:text-primary-container hover:bg-white/5 transition-all font-headline tracking-[-0.02em] uppercase font-bold text-sm px-2 py-1"
-          >
-            DATA
           </a>
         </div>
 
