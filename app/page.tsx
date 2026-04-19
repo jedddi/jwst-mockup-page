@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { SplineScene } from "@/components/SplineScene";
 import { CosmicLandmarks } from "@/components/CosmicLandmarks";
+import { Eye, Snowflake, Compass } from "lucide-react";
+import { SystemTelemetry } from "@/components/SystemTelemetry";
 
 export default function Home() {
   return (
@@ -38,7 +40,7 @@ export default function Home() {
           </a>
           <a
             id="nav-data"
-            href="#"
+            href="#telemetry"
             className="text-on-surface/70 hover:text-primary-container hover:bg-white/5 transition-all font-headline tracking-[-0.02em] uppercase font-bold text-sm px-2 py-1"
           >
             DATA
@@ -139,6 +141,11 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
+          SYSTEM TELEMETRY & MISSION STATS
+      ══════════════════════════════════════════ */}
+      <SystemTelemetry />
+
+      {/* ══════════════════════════════════════════
           THE SINGULARITY (3D SCENE)
       ══════════════════════════════════════════ */}
       <section
@@ -149,11 +156,11 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <SplineScene scene="https://prod.spline.design/qn1N104nhlHyEGxv/scene.splinecode" />
         </div>
-        
+
         {/* Gradients for smooth fading */}
         <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-surface to-transparent z-10 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-surface to-transparent z-10 pointer-events-none" />
-        
+
         {/* Black Hole Content (anchored left) */}
         <div className="relative z-20 w-full max-w-[1600px] mx-auto flex justify-start items-center h-full">
           <div className="max-w-xl flex flex-col justify-center h-full mt-16 pointer-events-none">
@@ -204,9 +211,7 @@ export default function Home() {
           {/* Capability 1 — Infrared */}
           <div className="bg-surface-container-lowest border border-outline-variant/15 rounded-lg p-6 relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-              <span className="material-symbols-outlined text-6xl text-primary">
-                visibility
-              </span>
+              <Eye className="w-16 h-16 text-primary" />
             </div>
             <div className="font-label text-xs text-secondary-fixed-dim uppercase tracking-[0.1em] mb-2 flex justify-between items-center">
               <span>INFRARED SENSOR</span>
@@ -224,9 +229,7 @@ export default function Home() {
           {/* Capability 2 — Thermal */}
           <div className="bg-surface-container-lowest border border-outline-variant/15 rounded-lg p-6 relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-              <span className="material-symbols-outlined text-6xl text-tertiary">
-                ac_unit
-              </span>
+              <Snowflake className="w-16 h-16 text-tertiary" />
             </div>
             <div className="font-label text-xs text-secondary-fixed-dim uppercase tracking-[0.1em] mb-2 flex justify-between items-center">
               <span>THERMAL STATE</span>
@@ -244,9 +247,7 @@ export default function Home() {
           {/* Capability 3 — Positioning */}
           <div className="bg-surface-container-lowest border border-outline-variant/15 rounded-lg p-6 relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-              <span className="material-symbols-outlined text-6xl text-secondary">
-                explore
-              </span>
+              <Compass className="w-16 h-16 text-secondary" />
             </div>
             <div className="font-label text-xs text-secondary-fixed-dim uppercase tracking-[0.1em] mb-2 flex justify-between items-center">
               <span>POSITIONING</span>
@@ -262,11 +263,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════════
-            COSMIC LANDMARKS GALLERY
-        ══════════════════════════════════════════ */}
-        <CosmicLandmarks />
       </main>
+
+      {/* ══════════════════════════════════════════
+          COSMIC LANDMARKS GALLERY
+      ══════════════════════════════════════════ */}
+      <CosmicLandmarks />
 
       {/* ── Footer ── */}
       <footer

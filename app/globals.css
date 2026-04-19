@@ -151,6 +151,23 @@ body {
   box-shadow: 0 0 20px rgba(255, 204, 108, 0.1);
 }
 
+/* ── Glass panel utility ── */
+.glass-panel {
+  background: rgba(53, 53, 52, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(155, 143, 125, 0.15);
+}
+
+/* ── Dot-grid background ── */
+.grid-bg {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(227, 176, 75, 0.05) 1px,
+    transparent 0
+  );
+  background-size: 40px 40px;
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

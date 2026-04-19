@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JWST OBSERVER | Mission Telemetry</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#c6c4df",
+                        "primary-container": "#e3b04b",
+                        "surface-variant": "#353534",
+                        "on-tertiary": "#003062",
+                        "surface": "#131313",
+                        "primary-fixed-dim": "#f3be58",
+                        "surface-container": "#201f1f",
+                        "on-primary-container": "#604400",
+                        "surface-bright": "#3a3939",
+                        "inverse-on-surface": "#313030",
+                        "on-primary": "#412d00",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#134684",
+                        "on-tertiary-container": "#164886",
+                        "background": "#131313",
+                        "tertiary-fixed-dim": "#a8c8ff",
+                        "primary-fixed": "#ffdea6",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#45455b",
+                        "surface-container-high": "#2a2a2a",
+                        "on-secondary-fixed": "#1a1a2e",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#e5e2e1",
+                        "primary": "#ffcc6c",
+                        "surface-container-low": "#1c1b1b",
+                        "outline-variant": "#4f4536",
+                        "on-secondary-container": "#b8b6d0",
+                        "on-background": "#e5e2e1",
+                        "tertiary-container": "#90b9fe",
+                        "on-secondary": "#2f2e43",
+                        "tertiary": "#bed4ff",
+                        "on-surface-variant": "#d3c5b1",
+                        "error-container": "#93000a",
+                        "outline": "#9b8f7d",
+                        "surface-dim": "#131313",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-fixed-variant": "#5e4200",
+                        "inverse-primary": "#7c5800",
+                        "tertiary-fixed": "#d6e3ff",
+                        "surface-container-highest": "#353534",
+                        "secondary-fixed": "#e2e0fc",
+                        "secondary-fixed-dim": "#c6c4df",
+                        "surface-tint": "#f3be58",
+                        "secondary-container": "#47475d",
+                        "on-primary-fixed": "#271900",
+                        "on-tertiary-fixed": "#001b3d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #131313; color: #e5e2e1; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(53, 53, 52, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(155, 143, 125, 0.15); }
+        .grid-bg { background-image: radial-gradient(circle at 1px 1px, rgba(227, 176, 75, 0.05) 1px, transparent 0); background-size: 40px 40px; }
+    </style>
+</head>
+<body class="bg-background selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#131313]/60 backdrop-blur-[20px] border-b border-[#3a3939]/15 shadow-[0_0_40px_rgba(227,176,75,0.05)]">
+<div class="flex justify-between items-center w-full px-8 py-4">
+<div class="text-xl font-bold tracking-tighter text-[#E3B04B] font-headline">JWST OBSERVER</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-headline tracking-tight text-sm uppercase text-neutral-400 hover:text-neutral-100 transition-colors" href="#">Mission</a>
+<a class="font-headline tracking-tight text-sm uppercase text-[#E3B04B] font-bold border-b-2 border-[#E3B04B] pb-1" href="#">Telemetry</a>
+<a class="font-headline tracking-tight text-sm uppercase text-neutral-400 hover:text-neutral-100 transition-colors" href="#">Gallery</a>
+<a class="font-headline tracking-tight text-sm uppercase text-neutral-400 hover:text-neutral-100 transition-colors" href="#">Science</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all">search</button>
+<button class="bg-[#E3B04B]/10 text-[#E3B04B] border border-[#E3B04B]/20 px-4 py-1.5 font-headline text-xs uppercase tracking-widest hover:bg-[#E3B04B]/20 transition-all active:scale-95">Live Data</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="relative min-h-screen pt-32 pb-24 grid-bg">
+<!-- Header Section -->
+<header class="max-w-7xl mx-auto px-8 mb-16 relative">
+<div class="inline-flex items-center gap-2 mb-4">
+<span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(227,176,75,0.8)] animate-pulse"></span>
+<span class="font-headline text-[10px] tracking-[0.2em] uppercase text-secondary-fixed-dim">Real-Time Data Feed</span>
+</div>
+<h1 class="font-headline text-6xl md:text-8xl font-bold tracking-tighter text-on-surface mb-4">SYSTEM<br/><span class="text-primary-container">TELEMETRY</span></h1>
+<p class="max-w-xl text-on-surface-variant text-lg leading-relaxed font-body">Deep space diagnostic array monitoring the James Webb Space Telescope's current mechanical and thermal equilibrium across L2 orbit.</p>
+</header>
+<!-- Bento Grid Layout -->
+<section class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-4">
+<!-- Health Stats: Operating Temp (Large Glass Card) -->
+<div class="md:col-span-8 md:row-span-2 glass-panel p-8 relative overflow-hidden flex flex-col justify-between group">
+<div class="absolute top-0 right-0 p-8">
+<span class="material-symbols-outlined text-primary-container/20 text-8xl transform group-hover:scale-110 transition-transform duration-700">thermostat</span>
+</div>
+<div>
+<span class="font-headline text-[10px] tracking-[0.2em] uppercase text-primary mb-2 block">Thermal Management</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface mb-8">OPERATING TEMPERATURE</h3>
+</div>
+<div class="flex items-baseline gap-4">
+<span class="font-headline text-8xl md:text-9xl font-bold tracking-tighter text-primary-container">-233</span>
+<span class="font-headline text-4xl text-on-surface-variant">°C</span>
+</div>
+<div class="mt-8 border-t border-outline-variant/20 pt-6 flex justify-between items-center">
+<p class="text-sm font-body text-on-surface-variant max-w-xs">Essential for Mid-Infrared Instrument (MIRI) sensitivity. Maintaining 40K baseline.</p>
+<div class="flex items-center gap-2 px-3 py-1 bg-primary-container/10 border border-primary-container/30 rounded-full">
+<span class="material-symbols-outlined text-primary-container text-xs" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-headline text-[10px] uppercase font-bold text-primary-container">Optimal</span>
+</div>
+</div>
+</div>
+<!-- Now Observing: Exoplanets -->
+<div class="md:col-span-4 glass-panel p-6 flex flex-col justify-between border-l-4 border-l-primary-container">
+<span class="font-headline text-[10px] tracking-[0.2em] uppercase text-secondary-fixed-dim mb-4 block">Planetary Catalog</span>
+<div>
+<div class="flex items-baseline gap-2 mb-2">
+<span class="font-headline text-5xl font-bold text-on-surface">150+</span>
+</div>
+<p class="font-headline text-sm uppercase tracking-wider text-primary-container">Exoplanets Profiled</p>
+</div>
+<div class="mt-6">
+<img class="w-full h-24 object-cover grayscale hover:grayscale-0 transition-all duration-500 rounded opacity-50 hover:opacity-100" data-alt="Stylized glowing exoplanet with faint atmospheric rings against a deep black void and distant stars" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOnxB4PVURAfIIS0k6SrZ-GjqRvdLvmPSBew6ExLqXu30YeDIWXffZvaI_Yig-4CaRjdtLwJ0cAeSRxNd0QcrBbr_7QPdlKURFR3aBxQ_2BYdhVTB9ovMfBFbLyfiOFP1tzSWjEQxdLJga-4wajlEGl9QrVqb4txQb8pU2wg6_I0-YRPns97TkBtegwdqze03PI322lHsyXkfyR9dAXOQfBddaDP01NDsHQ33smz7Jj-oPYFRubMurQvr4RqL0FYm-medTj4gxdU_N"/>
+</div>
+</div>
+<!-- Sunshield Efficiency -->
+<div class="md:col-span-4 glass-panel p-6">
+<span class="font-headline text-[10px] tracking-[0.2em] uppercase text-secondary-fixed-dim mb-6 block">Sunshield Efficiency</span>
+<div class="space-y-6">
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<span class="text-[10px] uppercase font-headline text-on-surface-variant">Hot Side</span>
+<p class="text-2xl font-headline font-bold text-on-surface">85°C</p>
+</div>
+<div class="w-1/2 h-1 bg-surface-container-high relative">
+<div class="absolute left-0 top-0 h-full bg-error w-[85%]"></div>
+</div>
+</div>
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<span class="text-[10px] uppercase font-headline text-on-surface-variant">Cold Side</span>
+<p class="text-2xl font-headline font-bold text-primary-container">-233°C</p>
+</div>
+<div class="w-1/2 h-1 bg-surface-container-high relative">
+<div class="absolute left-0 top-0 h-full bg-primary-container w-[15%]"></div>
+</div>
+</div>
+</div>
+<p class="mt-6 text-[11px] text-on-surface-variant leading-tight">Five-layer Kapton membrane maintaining a ~300°C thermal gradient.</p>
+</div>
+<!-- Mirror Alignment (Center Wide) -->
+<div class="md:col-span-6 glass-panel p-8 flex items-center justify-between group overflow-hidden">
+<div class="relative z-10">
+<span class="font-headline text-[10px] tracking-[0.2em] uppercase text-secondary-fixed-dim mb-2 block">Optics Integrity</span>
+<h4 class="font-headline text-3xl font-bold text-on-surface mb-2">MIRROR ALIGNMENT</h4>
+<div class="inline-flex items-center gap-2 bg-on-tertiary-container/20 text-tertiary-container px-3 py-1 rounded-sm border border-tertiary-container/30">
+<span class="font-headline text-xs font-bold tracking-widest uppercase">State: NOMINAL</span>
+</div>
+</div>
+<div class="relative w-32 h-32 flex items-center justify-center">
+<div class="absolute inset-0 border-2 border-primary-container/20 rounded-full animate-spin [animation-duration:10s]"></div>
+<div class="absolute inset-2 border border-primary-container/40 rounded-full animate-spin [animation-duration:15s] [animation-direction:reverse]"></div>
+<span class="material-symbols-outlined text-primary-container text-4xl" style="font-variation-settings: 'FILL' 1;">hexagon</span>
+</div>
+</div>
+<!-- Deepest View -->
+<div class="md:col-span-3 glass-panel p-6 flex flex-col justify-between">
+<div>
+<span class="font-headline text-[10px] tracking-[0.2em] uppercase text-secondary-fixed-dim mb-4 block">Temporal Depth</span>
+<p class="text-4xl font-headline font-bold text-on-surface">13.5B</p>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant">Light Years Back</p>
+</div>
+<span class="material-symbols-outlined text-primary-container/40 text-4xl mt-4">history_toggle_off</span>
+</div>
+<!-- Observation Time -->
+<div class="md:col-span-3 glass-panel p-6 flex flex-col justify-between bg-gradient-to-br from-surface-variant/40 to-surface-container-lowest/40">
+<div>
+<span class="font-headline text-[10px] tracking-[0.2em] uppercase text-secondary-fixed-dim mb-4 block">Uptime Log</span>
+<p class="text-4xl font-headline font-bold text-primary-container">4,300+</p>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant">Active Hours</p>
+</div>
+<div class="flex -space-x-2 mt-4 overflow-hidden">
+<div class="w-8 h-8 rounded-full border border-surface bg-surface-container-high flex items-center justify-center text-[10px] text-primary">SC</div>
+<div class="w-8 h-8 rounded-full border border-surface bg-surface-container-high flex items-center justify-center text-[10px] text-primary">NA</div>
+<div class="w-8 h-8 rounded-full border border-surface bg-surface-container-high flex items-center justify-center text-[10px] text-primary">EU</div>
+</div>
+</div>
+</section>
+<!-- Technical HUD Decorative Element -->
+<div class="max-w-7xl mx-auto px-8 mt-12 hidden md:block">
+<div class="flex justify-between items-center opacity-20">
+<div class="h-px bg-outline w-full mr-4"></div>
+<div class="font-headline text-[8px] uppercase tracking-[0.5em] whitespace-nowrap text-on-surface-variant">END OF TELEMETRY FEED // LATENCY: 24MS</div>
+<div class="h-px bg-outline w-full ml-4"></div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 mt-24 bg-[#0e0e0e] border-t border-[#3a3939]/15">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto">
+<div class="text-[#E3B04B] font-headline text-[10px] tracking-[0.1em] uppercase opacity-80">
+                © 2024 SPACE TELESCOPE SCIENCE INSTITUTE. OPERATED BY AURA FOR NASA.
+            </div>
+<div class="flex gap-8">
+<a class="font-headline text-[10px] tracking-[0.1em] uppercase text-neutral-500 hover:text-[#E3B04B] transition-colors opacity-80 hover:opacity-100" href="#">Legal</a>
+<a class="font-headline text-[10px] tracking-[0.1em] uppercase text-neutral-500 hover:text-[#E3B04B] transition-colors opacity-80 hover:opacity-100" href="#">Privacy</a>
+<a class="font-headline text-[10px] tracking-[0.1em] uppercase text-neutral-500 hover:text-[#E3B04B] transition-colors opacity-80 hover:opacity-100" href="#">Contact</a>
+<a class="font-headline text-[10px] tracking-[0.1em] uppercase text-neutral-500 hover:text-[#E3B04B] transition-colors opacity-80 hover:opacity-100" href="#">Data Archive</a>
+</div>
+</div>
+</footer>
+</body></html>

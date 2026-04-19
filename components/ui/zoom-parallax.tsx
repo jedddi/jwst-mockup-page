@@ -20,19 +20,58 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
 		offset: ['start start', 'end end'],
 	});
 
+	// The center image scales from 0.25 up to 1.0. Its 1.0 size represents its final state
+	// identical to the gallery cards below it. This enables a seamless transition 
+	// from the zoom to the page layout.
+	const scaleCenter = useTransform(scrollYProgress, [0, 1], [0.25, 1]);
+	const labelOpacity = useTransform(scrollYProgress, [0.75, 1], [0, 1]);
+
+	// These scales push the scattered background images outwards over the scroll
 	const scale4 = useTransform(scrollYProgress, [0, 1], [1, 4]);
 	const scale5 = useTransform(scrollYProgress, [0, 1], [1, 5]);
 	const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6]);
 	const scale8 = useTransform(scrollYProgress, [0, 1], [1, 8]);
 	const scale9 = useTransform(scrollYProgress, [0, 1], [1, 9]);
 
-	const scales = [scale4, scale5, scale6, scale5, scale6, scale8, scale9];
+	const scatteredScales = [scale4, scale5, scale6, scale5, scale6, scale8, scale9];
 
 	return (
 		<div ref={container} className="relative h-[300vh]">
 			<div className="sticky top-0 h-screen overflow-hidden">
 				{images.map(({ src, alt }, index) => {
-					const scale = scales[index % scales.length];
+					// Index 0 plays special role as the primary center item
+					if (index === 0) {
+						return (
+							<motion.div
+								key={index}
+								style={{ scale: scaleCenter }}
+								className="absolute top-0 flex h-full w-full items-center justify-center px-4 md:px-8"
+							>
+								{/* Formatted identically to the standard mission log card */}
+								<div className="relative w-full max-w-[1600px] h-[60vh] md:h-[80vh] rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.8)] border border-outline-variant/10">
+									<img
+										src={src || '/placeholder.svg'}
+										alt={alt || `Parallax image center`}
+										className="h-full w-full object-cover"
+									/>
+									<motion.div style={{ opacity: labelOpacity }} className="absolute inset-0">
+										<div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent opacity-90" />
+										<div className="absolute bottom-8 left-8 flex flex-col gap-1">
+											<div className="font-label text-xs tracking-[0.1em] text-primary uppercase drop-shadow-md">
+												OBSERVATION LOG 01
+											</div>
+											<div className="font-headline text-3xl md:text-5xl font-bold text-on-surface drop-shadow-md">
+												{alt}
+											</div>
+										</div>
+									</motion.div>
+								</div>
+							</motion.div>
+						);
+					}
+
+					// Scattered background items
+					const scale = scatteredScales[index % scatteredScales.length];
 
 					return (
 						<motion.div

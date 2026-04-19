@@ -2,31 +2,32 @@
 import React from 'react';
 import Lenis from '@studio-freight/lenis';
 import { ZoomParallax } from "@/components/ui/zoom-parallax";
+import { motion } from 'framer-motion';
 
 export function CosmicLandmarks() {
 
-	React.useEffect( () => {
-        const lenis = new Lenis()
-       
-        function raf(time: number) {
-            lenis.raf(time)
-            requestAnimationFrame(raf)
-        }
+	React.useEffect(() => {
+		const lenis = new Lenis()
 
-        requestAnimationFrame(raf)
-    },[])
+		function raf(time: number) {
+			lenis.raf(time)
+			requestAnimationFrame(raf)
+		}
+
+		requestAnimationFrame(raf)
+	}, [])
 
 	const images = [
 		{
-			src: '/cosmiclandmark/carina-nebula.jpg',
-			alt: 'Carina Nebula',
+			src: '/cosmiclandmark/tarantula_nebula.png',
+			alt: 'Tarantula Nebula',
 		},
 		{
 			src: '/cosmiclandmark/phantom_galaxy.jpg',
 			alt: 'Phantom Galaxy',
 		},
 		{
-			src: '/cosmiclandmark/pillars-of-creation.jpg',
+			src: '/cosmiclandmark/pillars-of-creation.png',
 			alt: 'Pillars of Creation',
 		},
 		{
@@ -34,16 +35,16 @@ export function CosmicLandmarks() {
 			alt: 'Southern Ring Nebula',
 		},
 		{
-			src: '/cosmiclandmark/stephans-quintet.jpg',
+			src: '/cosmiclandmark/stephans-quintet-2.jpg',
 			alt: 'Stephans Quintet',
 		},
 		{
-			src: '/cosmiclandmark/tarantula_nebula.png',
-			alt: 'Tarantula Nebula',
+			src: '/cosmiclandmark/carina-nebula-jets.jpg',
+			alt: 'Carina Nebula',
 		},
 		{
-			src: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1280&h=720&fit=crop&q=80',
-			alt: 'Milky Way Galaxy',
+			src: '/cosmiclandmark/ngc602.jpg',
+			alt: 'Star Cluster NGC 602',
 		},
 	];
 
@@ -59,10 +60,43 @@ export function CosmicLandmarks() {
 					COSMIC LANDMARKS
 				</h2>
 			</div>
+
 			<div className="w-full relative">
 				<ZoomParallax images={images} />
 			</div>
-			<div className="h-[20vh]"/>
+
+			{/* Post-Zoom Normal Flow Layout (Option C) */}
+			<div className="max-w-[1600px] mx-auto px-4 md:px-8 py-32 flex flex-col gap-24 md:gap-48 overflow-hidden z-20 relative">
+				<div className="text-center font-headline text-2xl tracking-[0.1em] uppercase text-outline-variant/60">
+					MISSION LOG VISUALS
+				</div>
+				{images.slice(1).map((img, i) => (
+					<motion.div
+						key={`fade-${i}`}
+						initial={{ opacity: 0, y: 100, scale: 0.95 }}
+						whileInView={{ opacity: 1, y: 0, scale: 1 }}
+						transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+						viewport={{ once: true, margin: "-100px" }}
+						className="relative w-full h-[60vh] md:h-[80vh] rounded-2xl overflow-hidden border border-outline-variant/10 shadow-2xl"
+					>
+						<img
+							src={img.src}
+							alt={img.alt}
+							className="w-full h-full object-cover"
+						/>
+						<div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent opacity-90" />
+						<div className="absolute bottom-8 left-8 flex flex-col gap-1">
+							<div className="font-label text-xs tracking-[0.1em] text-primary uppercase drop-shadow-md">
+								OBSERVATION LOG 0{i + 2}
+							</div>
+							<div className="font-headline text-3xl md:text-5xl font-bold text-on-surface drop-shadow-md">
+								{img.alt}
+							</div>
+						</div>
+					</motion.div>
+				))}
+			</div>
+			<div className="h-[20vh]" />
 		</section>
 	);
 }
