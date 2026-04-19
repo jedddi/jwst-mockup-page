@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JWST Observer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#c6c4df",
+                        "on-background": "#e5e2e1",
+                        "secondary-container": "#47475d",
+                        "on-secondary-fixed-variant": "#45455b",
+                        "on-secondary-container": "#b8b6d0",
+                        "primary-container": "#e3b04b",
+                        "surface-container-highest": "#353534",
+                        "on-surface-variant": "#d3c5b1",
+                        "on-tertiary-fixed": "#001b3d",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-dim": "#131313",
+                        "primary-fixed-dim": "#f3be58",
+                        "primary-fixed": "#ffdea6",
+                        "error-container": "#93000a",
+                        "surface": "#131313",
+                        "primary": "#ffcc6c",
+                        "tertiary": "#bed4ff",
+                        "secondary-fixed-dim": "#c6c4df",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary": "#412d00",
+                        "inverse-primary": "#7c5800",
+                        "secondary-fixed": "#e2e0fc",
+                        "on-tertiary-container": "#164886",
+                        "on-secondary": "#2f2e43",
+                        "on-primary-container": "#604400",
+                        "on-primary-fixed-variant": "#5e4200",
+                        "surface-variant": "#353534",
+                        "on-tertiary-fixed-variant": "#134684",
+                        "outline": "#9b8f7d",
+                        "on-secondary-fixed": "#1a1a2e",
+                        "tertiary-fixed-dim": "#a8c8ff",
+                        "outline-variant": "#4f4536",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0e0e0e",
+                        "tertiary-container": "#90b9fe",
+                        "surface-container": "#201f1f",
+                        "on-primary-fixed": "#271900",
+                        "background": "#131313",
+                        "surface-bright": "#3a3939",
+                        "on-tertiary": "#003062",
+                        "surface-tint": "#f3be58",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "on-surface": "#e5e2e1",
+                        "tertiary-fixed": "#d6e3ff",
+                        "inverse-on-surface": "#313030"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-surface/60 backdrop-blur-xl dark:bg-[#131313]/60 border-b border-[#353534]/30 shadow-[0_0_40px_rgba(227,176,75,0.05)]">
+<div class="text-xl font-black tracking-tighter text-[#E3B04B] font-headline">JWST OBSERVER</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#E3B04B] border-b-2 border-[#E3B04B] pb-1 font-['Space_Grotesk'] tracking-[-0.02em] uppercase font-bold text-sm" href="#">MISSION</a>
+<a class="text-on-surface/70 dark:text-[#e5e2e1]/70 hover:text-[#E3B04B] hover:bg-white/5 transition-all font-['Space_Grotesk'] tracking-[-0.02em] uppercase font-bold text-sm px-2 py-1" href="#">CAPABILITIES</a>
+<a class="text-on-surface/70 dark:text-[#e5e2e1]/70 hover:text-[#E3B04B] hover:bg-white/5 transition-all font-['Space_Grotesk'] tracking-[-0.02em] uppercase font-bold text-sm px-2 py-1" href="#">GALLERY</a>
+<a class="text-on-surface/70 dark:text-[#e5e2e1]/70 hover:text-[#E3B04B] hover:bg-white/5 transition-all font-['Space_Grotesk'] tracking-[-0.02em] uppercase font-bold text-sm px-2 py-1" href="#">DATA</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center gap-2 bg-primary-container text-on-primary px-4 py-2 rounded font-label text-sm uppercase tracking-[0.1em] font-bold hover:bg-primary transition-colors">
+<span>DEEP SPACE LINK</span>
+</button>
+</div>
+</nav>
+<main class="pt-28 pb-24 px-4 md:px-8 max-w-[1600px] mx-auto flex flex-col gap-8">
+<!-- Hero Section -->
+<section class="relative min-h-[716px] rounded-lg overflow-hidden border border-outline-variant/15 flex items-center p-8 lg:p-16">
+<img alt="High-resolution rendering of the James Webb Space Telescope with its golden hexagonal mirrors deployed in deep space above Earth" class="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-60 z-0" data-alt="High-resolution rendering of the James Webb Space Telescope with its golden hexagonal mirrors deployed in deep space above Earth" src="https://lh3.googleusercontent.com/aida/ADBb0uhc90TwtmF79JGMADy3Hbk-ri51oCcwZ3DKo6veVPSk1oD64bPYed9rHRLxXiHmVSR0ASNsHavBJR600TIm0ec1w2taLW-Gr8Ibzkbv2NJyy6a_RkCO5UDQjNiLnN3kRGKuTjufehb__kWRD9iyH-cv5XtISxLfJvlYYsqJjwHVobTGVQmgnHFx-DcTECmo5ZPB3EQCqgHfMjRh0vLF1AgXvHDcUDWKW5_NN11Td-SVPe8rwn77gCyaAwzsS2ACtFKbsfOf2w0kqw"/>
+<div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent z-10 pointer-events-none"></div>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(227,176,75,0.05)_0%,transparent_70%)] z-10"></div>
+<div class="relative z-20 max-w-2xl flex flex-col gap-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface-container-high/80 backdrop-blur border border-outline-variant/30 w-fit">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse opacity-80"></span>
+<span class="font-label text-xs uppercase tracking-[0.1em] text-primary">System Online</span>
+</div>
+<h1 class="font-headline text-5xl md:text-7xl font-bold tracking-[-0.02em] leading-tight drop-shadow-lg">
+                    TRAVEL <br/><span class="text-primary-container">13.5 BILLION</span> YEARS.
+                </h1>
+<p class="font-body text-lg md:text-xl text-on-surface-variant max-w-md drop-shadow-md">
+                    Exploring the deep past with the James Webb Space Telescope. A real-time 3D exploration of our cosmic origins.
+                </p>
+<div class="flex flex-wrap gap-4 mt-4">
+<button class="bg-primary-container text-on-primary px-6 py-3 rounded font-label text-sm uppercase tracking-[0.1em] font-bold hover:bg-primary transition-colors">
+                        Launch Mission
+                    </button>
+<button class="bg-surface/50 backdrop-blur border border-outline-variant/50 text-primary px-6 py-3 rounded font-label text-sm uppercase tracking-[0.1em] font-bold hover:bg-surface-container-high transition-colors hover:shadow-[0_0_20px_rgba(255,204,108,0.1)]">
+                        View Spec Sheet
+                    </button>
+</div>
+</div>
+<!-- HUD Elements Overlay -->
+<div class="absolute top-8 right-8 z-20 flex flex-col gap-2 text-right">
+<div class="font-label text-xs text-secondary-fixed-dim uppercase tracking-[0.1em] drop-shadow-md">L2 ORBIT STATUS</div>
+<div class="font-headline text-sm text-primary drop-shadow-md">STABLE / NOMINAL</div>
+</div>
+<div class="absolute bottom-8 right-8 z-20 flex flex-col gap-2 text-right">
+<div class="font-label text-xs text-secondary-fixed-dim uppercase tracking-[0.1em] drop-shadow-md">MIRROR TEMP</div>
+<div class="font-headline text-sm text-primary drop-shadow-md">40.2 K</div>
+</div>
+</section>
+<!-- The Singularity & Capabilities Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- The Singularity -->
+<div class="lg:col-span-7 bg-surface-container-low border border-outline-variant/15 rounded-lg overflow-hidden relative min-h-[500px] flex flex-col justify-end p-8 group">
+<img alt="Deep space rendering of a glowing supermassive black hole with accretion disk" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen group-hover:scale-105 transition-transform duration-1000" data-alt="Deep space rendering of a glowing supermassive black hole with accretion disk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVNJLUEymOEvDOU9Png7GGt8l86DWDFJcvLavnqyt1TwwGsQG2Y-EmsatkyV5FOJt0tOH9Q3HD6jJdX8t1JnXZSLZmv_PV53iZHVgotaE-41kfn2RTxsoJYRK2NKH2VKVm-F6QsJf9OXq-vJd-hWLefSqfTQhloo-40IgJK6v6uNvkk0RciLXsnC147q7jqBdq3R7hvMX-aqQfHnw5Q2iBejxt2oGHQhmijDnrf3ji3PtmtkFr4_Gi5UIr7_9MWnyRj4D7mkzd-RaU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent"></div>
+<div class="relative z-10">
+<div class="font-label text-xs text-primary mb-2 uppercase tracking-[0.1em]">TARGET ACQUIRED</div>
+<h2 class="font-headline text-4xl font-bold tracking-[-0.02em] mb-6">THE SINGULARITY</h2>
+<div class="flex flex-wrap gap-4 bg-surface-variant/40 backdrop-blur-md p-4 rounded border border-outline-variant/20 inline-flex">
+<div>
+<div class="font-label text-[10px] text-secondary-fixed-dim uppercase tracking-[0.1em] mb-1">MASS</div>
+<div class="font-headline text-sm text-on-surface">4.1M SUNS</div>
+</div>
+<div class="w-px bg-outline-variant/30 hidden md:block"></div>
+<div>
+<div class="font-label text-[10px] text-secondary-fixed-dim uppercase tracking-[0.1em] mb-1">DISTANCE</div>
+<div class="font-headline text-sm text-on-surface">26,000 LY</div>
+</div>
+<div class="w-px bg-outline-variant/30 hidden md:block"></div>
+<div>
+<div class="font-label text-[10px] text-secondary-fixed-dim uppercase tracking-[0.1em] mb-1">TARGET</div>
+<div class="font-headline text-sm text-primary">SAGITTARIUS A*</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Capabilities -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="bg-surface-container-lowest border border-outline-variant/15 rounded-lg p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary">visibility</span>
+</div>
+<div class="font-label text-xs text-secondary-fixed-dim uppercase tracking-[0.1em] mb-2 flex justify-between items-center">
+<span>INFRARED SENSOR</span>
+<span class="text-primary opacity-50">NIRCam</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-2">PIERCE THE DUST</h3>
+<p class="font-body text-sm text-on-surface-variant">NIRCam sees what the human eye cannot, revealing hidden stars in stellar nurseries.</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/15 rounded-lg p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-tertiary">ac_unit</span>
+</div>
+<div class="font-label text-xs text-secondary-fixed-dim uppercase tracking-[0.1em] mb-2 flex justify-between items-center">
+<span>THERMAL STATE</span>
+<span class="text-tertiary opacity-50">MIRI</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-2">THE COLDEST EYE</h3>
+<p class="font-body text-sm text-on-surface-variant">Operating at 40 Kelvin, observing the coldest and most distant objects.</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/15 rounded-lg p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-secondary">explore</span>
+</div>
+<div class="font-label text-xs text-secondary-fixed-dim uppercase tracking-[0.1em] mb-2 flex justify-between items-center">
+<span>POSITIONING</span>
+<span class="text-secondary opacity-50">L2</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-2">L2 ORBIT</h3>
+<p class="font-body text-sm text-on-surface-variant">Stationed 1.5 million km from Earth, keeping the sunshield aligned.</p>
+</div>
+</div>
+</section>
+<!-- Travel Gallery -->
+<section class="mt-8">
+<div class="flex justify-between items-end mb-8 border-b border-outline-variant/20 pb-4">
+<h2 class="font-headline text-3xl font-bold tracking-[-0.02em]">COSMIC LANDMARKS</h2>
+<a class="font-label text-sm text-primary uppercase tracking-[0.1em] hover:text-primary-fixed transition-colors flex items-center gap-1" href="#">
+                    VIEW ALL LOGS <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-container-low border border-outline-variant/15 rounded-lg overflow-hidden group cursor-pointer">
+<div class="h-64 relative overflow-hidden">
+<img alt="Nebula with pillars of gas and dust illuminated by starlight" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Nebula with pillars of gas and dust illuminated by starlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDngh-Cd5J3VcvlMDEvx-ka6LdfDPeUpqjHFwVdDqteG6jOkYwIOGHwiHfyTZDM8nor2y4p3smPjOUr6lrDz_XBtly9s7RaWeLJ0ZX42H4WDCI_ULp9uw-jISaHiHuAq8v6yX6W3sIDOityO6SmpHSnfy90YGr8Kl7ad2A9p9FAedeZ5Vs1O6adJtMOH00G7wOJ118nJNqMP7DekSKaO3FEHXc1qiCDbzlIozDEny6sGAz8rSJYj5EfeeNVwIb3J4V2oevJIySdby-g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent opacity-80"></div>
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<div>
+<div class="font-label text-[10px] text-primary uppercase tracking-[0.1em] mb-1">M16</div>
+<div class="font-headline text-lg font-bold">Pillars of Creation</div>
+</div>
+<span class="material-symbols-outlined text-on-surface/50 group-hover:text-primary transition-colors">north_east</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-low border border-outline-variant/15 rounded-lg overflow-hidden group cursor-pointer md:mt-12">
+<div class="h-64 relative overflow-hidden">
+<img alt="Vibrant cosmic dust clouds and newborn stars in deep space" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Vibrant cosmic dust clouds and newborn stars in deep space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrb7DD_TcrEci_nxHgCNbeLhO_k18dS2edfLJa449Jkpp2aNaAKLuBq76JJGCHvpNM2BZYwXJTLuE03n5GP9rjYoX55kDsdTM6ifjt_JZEu2fkdtSYdG9ecWUOTpJJfdVDvUlmdFAuE4OIr1_FvFbkIxYGZNzEJMM7LA65JmeJ6nEtunTgOcIUiJOB12Q-O3LuZD3DKVNEWBPwewSVjEXdPQSOafLnnu0eXtx7zZxDjZKykpsGRMwhYE67geY_uPE677_-2yrT5SBO"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent opacity-80"></div>
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<div>
+<div class="font-label text-[10px] text-primary uppercase tracking-[0.1em] mb-1">NGC 3372</div>
+<div class="font-headline text-lg font-bold">Carina Nebula</div>
+</div>
+<span class="material-symbols-outlined text-on-surface/50 group-hover:text-primary transition-colors">north_east</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-low border border-outline-variant/15 rounded-lg overflow-hidden group cursor-pointer md:mt-6">
+<div class="h-64 relative overflow-hidden">
+<img alt="Group of galaxies interacting in deep space" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Group of galaxies interacting in deep space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqzz1JBKmtejJOHfsUqCo7PWflWughJtOqqaJXrEjF7QXAjwad9RXaeQsAd4fKDWFhDF8dTSEHeq9hqPzCfOXqYtzeo7CgLB-0RxUhw0-yg4uljyDn_qlg45_Uuln1XctxFMhJEHoNiMv6PQYbjq8hqw-UCOQ1aAnDfh8K-9IqKZSsBB31x5NoGPh4oQyYn617WlNSNQQ45HXSu1Wqitgb8tBHwaRjftc7bvlFQ9t-JGxGbkgtUMRO1PqJ3RpR1Hzz9WsQDMCHCif2"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent opacity-80"></div>
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<div>
+<div class="font-label text-[10px] text-primary uppercase tracking-[0.1em] mb-1">HCG 92</div>
+<div class="font-headline text-lg font-bold">Stephan’s Quintet</div>
+</div>
+<span class="material-symbols-outlined text-on-surface/50 group-hover:text-primary transition-colors">north_east</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 bg-[#0e0e0e] full-width border-t border-[#353534]/20 font-['Space_Grotesk'] text-[10px] tracking-[0.1em] uppercase text-[#E3B04B]">
+<div class="flex flex-col gap-2">
+<div class="text-lg font-bold text-[#E3B04B]">JWST OBSERVER</div>
+<div class="text-[#9b8f7d]/60">© 2024 NASA/ESA/CSA ENGINEER'S LOG - SYSTEM STATUS: NOMINAL</div>
+</div>
+<div class="flex gap-6">
+<a class="text-[#9b8f7d]/60 hover:text-[#E3B04B] transition-colors opacity-80 hover:opacity-100" href="#">TELEMETRY</a>
+<a class="text-[#9b8f7d]/60 hover:text-[#E3B04B] transition-colors opacity-80 hover:opacity-100" href="#">SPECTROSCOPY</a>
+<a class="text-[#9b8f7d]/60 hover:text-[#E3B04B] transition-colors opacity-80 hover:opacity-100" href="#">L2 COORDINATES</a>
+<a class="text-[#9b8f7d]/60 hover:text-[#E3B04B] transition-colors opacity-80 hover:opacity-100" href="#">LEGAL</a>
+</div>
+</footer>
+</body></html>
