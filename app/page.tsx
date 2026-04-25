@@ -10,7 +10,7 @@ export default function Home() {
       {/* ── Top Navigation Bar ── */}
       <nav
         id="top-nav"
-        className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-surface/60 backdrop-blur-xl border-b border-surface-variant/30 shadow-ambient-gold"
+        className="fixed top-0 left-0 z-50 flex h-20 w-full items-center justify-between border-0 border-transparent bg-gradient-to-b from-surface/50 via-surface/15 to-transparent px-6 shadow-none ring-0 backdrop-blur-sm md:px-8"
       >
         <div className="text-xl font-black tracking-tighter text-primary-container font-headline">
           JWST OBSERVER
