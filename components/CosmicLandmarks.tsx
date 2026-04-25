@@ -1,21 +1,10 @@
 'use client';
 import React from 'react';
-import Lenis from '@studio-freight/lenis';
+import Image from 'next/image';
 import { ZoomParallax } from "@/components/ui/zoom-parallax";
 import { motion } from 'framer-motion';
 
 export function CosmicLandmarks() {
-
-	React.useEffect(() => {
-		const lenis = new Lenis()
-
-		function raf(time: number) {
-			lenis.raf(time)
-			requestAnimationFrame(raf)
-		}
-
-		requestAnimationFrame(raf)
-	}, [])
 
 	const images = [
 		{
@@ -66,7 +55,7 @@ export function CosmicLandmarks() {
 			</div>
 
 			{/* Post-Zoom Normal Flow Layout (Option C) */}
-			<div className="max-w-[1600px] mx-auto px-4 md:px-8 py-32 flex flex-col gap-24 md:gap-48 overflow-hidden z-20 relative">
+			<div className="max-w-[1600px] mx-auto px-4 md:px-8 py-32 flex flex-col gap-24 md:gap-48 overflow-hidden z-20 relative [content-visibility:auto]">
 				<div className="text-center font-headline text-2xl tracking-[0.1em] uppercase text-outline-variant/60">
 					MISSION LOG VISUALS
 				</div>
@@ -75,14 +64,18 @@ export function CosmicLandmarks() {
 						key={`fade-${i}`}
 						initial={{ opacity: 0, y: 100, scale: 0.95 }}
 						whileInView={{ opacity: 1, y: 0, scale: 1 }}
-						transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+						transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
 						viewport={{ once: true, margin: "-100px" }}
 						className="relative w-full h-[60vh] md:h-[80vh] rounded-2xl overflow-hidden border border-outline-variant/10 shadow-2xl"
 					>
-						<img
+						<Image
 							src={img.src}
 							alt={img.alt}
-							className="w-full h-full object-cover"
+							fill
+							sizes="(max-width: 768px) 100vw, min(1600px, 100vw)"
+							className="object-cover"
+							loading="lazy"
+							decoding="async"
 						/>
 						<div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent opacity-90" />
 						<div className="absolute bottom-8 left-8 flex flex-col gap-1">

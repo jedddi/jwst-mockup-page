@@ -2,6 +2,7 @@
 
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { useRef } from 'react';
+import Image from 'next/image';
 
 interface Image {
 	src: string;
@@ -37,7 +38,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
 
 	return (
 		<div ref={container} className="relative h-[300vh]">
-			<div className="sticky top-0 h-screen overflow-hidden">
+			<div className="sticky top-0 h-screen overflow-hidden isolate">
 				{images.map(({ src, alt }, index) => {
 					// Index 0 plays special role as the primary center item
 					if (index === 0) {
@@ -45,14 +46,18 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
 							<motion.div
 								key={index}
 								style={{ scale: scaleCenter }}
-								className="absolute top-0 flex h-full w-full items-center justify-center px-4 md:px-8"
+								className="will-change-transform absolute top-0 flex h-full w-full items-center justify-center px-4 md:px-8"
 							>
 								{/* Formatted identically to the standard mission log card */}
 								<div className="relative w-full max-w-[1600px] h-[60vh] md:h-[80vh] rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.8)] border border-outline-variant/10">
-									<img
+									<Image
 										src={src || '/placeholder.svg'}
 										alt={alt || `Parallax image center`}
-										className="h-full w-full object-cover"
+										fill
+										sizes="(max-width: 768px) 100vw, min(1600px, 95vw)"
+										className="object-cover"
+										loading="lazy"
+										decoding="async"
 									/>
 									<motion.div style={{ opacity: labelOpacity }} className="absolute inset-0">
 										<div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent opacity-90" />
@@ -77,13 +82,17 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
 						<motion.div
 							key={index}
 							style={{ scale }}
-							className={`absolute top-0 flex h-full w-full items-center justify-center ${index === 1 ? '[&>div]:!-top-[30vh] [&>div]:!left-[5vw] [&>div]:!h-[30vh] [&>div]:!w-[35vw]' : ''} ${index === 2 ? '[&>div]:!-top-[10vh] [&>div]:!-left-[25vw] [&>div]:!h-[45vh] [&>div]:!w-[20vw]' : ''} ${index === 3 ? '[&>div]:!left-[27.5vw] [&>div]:!h-[25vh] [&>div]:!w-[25vw]' : ''} ${index === 4 ? '[&>div]:!top-[27.5vh] [&>div]:!left-[5vw] [&>div]:!h-[25vh] [&>div]:!w-[20vw]' : ''} ${index === 5 ? '[&>div]:!top-[27.5vh] [&>div]:!-left-[22.5vw] [&>div]:!h-[25vh] [&>div]:!w-[30vw]' : ''} ${index === 6 ? '[&>div]:!top-[22.5vh] [&>div]:!left-[25vw] [&>div]:!h-[15vh] [&>div]:!w-[15vw]' : ''} `}
+							className={`will-change-transform absolute top-0 flex h-full w-full items-center justify-center ${index === 1 ? '[&>div]:!-top-[30vh] [&>div]:!left-[5vw] [&>div]:!h-[30vh] [&>div]:!w-[35vw]' : ''} ${index === 2 ? '[&>div]:!-top-[10vh] [&>div]:!-left-[25vw] [&>div]:!h-[45vh] [&>div]:!w-[20vw]' : ''} ${index === 3 ? '[&>div]:!left-[27.5vw] [&>div]:!h-[25vh] [&>div]:!w-[25vw]' : ''} ${index === 4 ? '[&>div]:!top-[27.5vh] [&>div]:!left-[5vw] [&>div]:!h-[25vh] [&>div]:!w-[20vw]' : ''} ${index === 5 ? '[&>div]:!top-[27.5vh] [&>div]:!-left-[22.5vw] [&>div]:!h-[25vh] [&>div]:!w-[30vw]' : ''} ${index === 6 ? '[&>div]:!top-[22.5vh] [&>div]:!left-[25vw] [&>div]:!h-[15vh] [&>div]:!w-[15vw]' : ''} `}
 						>
 							<div className="relative h-[25vh] w-[25vw]">
-								<img
+								<Image
 									src={src || '/placeholder.svg'}
 									alt={alt || `Parallax image ${index + 1}`}
-									className="h-full w-full object-cover"
+									fill
+									sizes="(max-width: 900px) 40vw, 30vw"
+									className="object-cover"
+									loading="lazy"
+									decoding="async"
 								/>
 							</div>
 						</motion.div>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SplineScene } from "@/components/SplineScene";
+import { SingularitySection } from "@/components/SingularitySection";
 import { CosmicLandmarks } from "@/components/CosmicLandmarks";
 import { Eye, Snowflake, Compass } from "lucide-react";
 import { SystemTelemetry } from "@/components/SystemTelemetry";
@@ -148,59 +148,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           THE SINGULARITY (3D SCENE)
       ══════════════════════════════════════════ */}
-      <section
-        id="singularity"
-        className="relative w-full h-screen overflow-hidden flex items-center p-4 md:p-8"
-      >
-        {/* 3D Background */}
-        <div className="absolute inset-0 z-0">
-          <SplineScene scene="https://prod.spline.design/qn1N104nhlHyEGxv/scene.splinecode" />
-        </div>
-
-        {/* Gradients for smooth fading */}
-        <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-surface to-transparent z-10 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-surface to-transparent z-10 pointer-events-none" />
-
-        {/* Black Hole Content (anchored left) */}
-        <div className="relative z-20 w-full max-w-[1600px] mx-auto flex justify-start items-center h-full">
-          <div className="max-w-xl flex flex-col justify-center h-full mt-16 pointer-events-none">
-            <div className="font-label text-xs text-primary mb-2 uppercase tracking-[0.1em] drop-shadow-md">
-              TARGET ACQUIRED
-            </div>
-            <h2 className="font-headline text-5xl md:text-7xl font-bold tracking-[-0.02em] mb-6 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
-              THE SINGULARITY
-            </h2>
-            <div className="flex flex-wrap gap-4 bg-surface-variant/40 backdrop-blur-md p-4 rounded-sm border border-outline-variant/20 w-fit drop-shadow-md">
-              <div>
-                <div className="font-label text-[10px] text-secondary-fixed-dim uppercase tracking-[0.1em] mb-1">
-                  MASS
-                </div>
-                <div className="font-headline text-sm text-on-surface">
-                  4.1M SUNS
-                </div>
-              </div>
-              <div className="w-px bg-outline-variant/30 hidden md:block" />
-              <div>
-                <div className="font-label text-[10px] text-secondary-fixed-dim uppercase tracking-[0.1em] mb-1">
-                  DISTANCE
-                </div>
-                <div className="font-headline text-sm text-on-surface">
-                  26,000 LY
-                </div>
-              </div>
-              <div className="w-px bg-outline-variant/30 hidden md:block" />
-              <div>
-                <div className="font-label text-[10px] text-secondary-fixed-dim uppercase tracking-[0.1em] mb-1">
-                  TARGET
-                </div>
-                <div className="font-headline text-sm text-primary">
-                  SAGITTARIUS A*
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <SingularitySection />
 
       {/* ── Main Content ── */}
       <main className="relative z-30 -mt-32 md:-mt-64 pt-8 pb-24 px-4 md:px-8 max-w-[1600px] mx-auto flex flex-col gap-16">
